@@ -1,0 +1,275 @@
+form {
+    display: inline;
+}
+
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    margin: 0;
+}
+
+.board-list-admin {
+    margin-left: 5%;
+}
+
+.govuk-back-link {
+    width: 2.5%;
+    margin-left: 1%;
+}
+
+.app-back-to-top {
+    left: 0;
+    right: -10;
+}
+
+.govuk-form-group {
+    margin: 1%;
+}
+
+.admin-buttons {
+    display: table;
+    margin: 0 auto;
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+.div2 {
+    width: 40%;
+    position: relative;
+    right: 0px;
+    margin: 5px 5px 100px 50px;
+    padding-right: 0px;
+    box-shadow: 5px 10px;
+    border: 2px solid;
+    zoom: 0;
+}
+
+.content {
+    padding: 10px;
+    position: absolute;
+    box-shadow: 0px 10px;
+    top: 0px;
+    left: 3px;
+    bottom: 300px;
+    width: 100%;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.govuk-button {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.govuk-breadcrumbs__list {
+    margin-left: 20px;
+}
+
+.govuk-phase-banner {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.govuk-body {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.buttons {
+    position: relative;
+    padding-top: 0px;
+}
+
+.div1 {
+    width: 90%;
+    position: relative;
+    right: 0px;
+    margin: 0px 0px 10px 10px;
+    padding-right: 5px;
+    padding-top: 0px;
+    padding-bottom: 60px;
+    padding-left: 0px;
+    box-shadow: 2px 4px;
+    border: 1px solid;
+}
+
+
+
+.div3 {
+    width: 90%;
+    position: relative;
+    right: 0px;
+    margin: 0px 500px 20px 0px;
+    padding-right: 5px;
+    padding-top: 0px;
+    padding-bottom: 160px;
+    padding-left: 0px;
+    box-shadow: 5px 10px;
+    border: 2px solid;
+}
+
+.content {
+    padding: 10px;
+    position: absolute;
+    box-shadow: 0px 10px;
+    top: 0px;
+    left: 3px;
+    bottom: 300px;
+    width: 100%;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.post-img {
+    width: 160px;
+    height: 110px;
+    object-fit: scale-down;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.modal {
+    position: absolute;
+    float: left;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header-div {
+    background-color: #f3f2f1;
+    width: 100%;
+    display: inline-block;
+}
+
+.board-list {
+    float: left;
+}
+
+.header-right-options {
+    color: #0b0c0c;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    position: right;
+    float: right;
+}
+
+.govuk-grid-row {
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
+    flex: 2 1 auto;
+}
+
+.govuk-heading-m {
+    text-align: center;
+}
+
+.board-modal {
+
+    max-height: 70%;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    display: block;
+    position: fixed;
+    /* width: 100%; */
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+}
+
+.dataTable {
+    padding-right: 1%;
+}
+
+#backdrop {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.admin-content {
+    width: 85%;
+    padding-left: 2%;
+}
+
+.dashboard-sidenav {
+    padding-left: 0%;
+    background: hsl(0deg 0% 94%);
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 15%;
+}
+
+.fa-solid, .fa-regular, .fa-duotone {
+    padding-right: 5%;
+}
+
+.dashboard-sidenav__link {
+    margin-bottom: 5%;
+}
+
+.main-container {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.main-container {
+    flex: 2 1 auto;
+}
+
+.dashboard_sidenav__bottom {
+    position: absolute;
+    width: 80%;
+    bottom: 10px;
+}
+
+.footer {
+    font-family: Inter, arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 1.14286;
+    border-top: 1px solid #b1b4b6;
+    color: #0b0c0c;
+    background: #f3f2f1
+}
+
+.govuk-checkboxes__item__active {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    top: -2px;
+    left: -2px;
+    width: 44px;
+    height: 10px;
+    margin: 0;
+    opacity: 0
+}
+
+.reports-header {
+    text-align: center;
+}
