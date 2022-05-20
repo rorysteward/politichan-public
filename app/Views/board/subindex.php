@@ -74,7 +74,7 @@
           </div>
           <p class="govuk-body govuk-!-font-size-24"><?= $op_post['post_text']; ?></p>
           <hr class="govuk-section-break govuk-section-break--visible">
-          <p class="govuk-body govuk-!-font-size-02" style="text-align:right">This thread has <?= $sub_post_count[$i][0]['COUNT(*)']; ?> responses</p>
+          <p class="govuk-body govuk-!-font-size-02" style="text-align:right">This thread has <?= $sub_post_count[$i][0]['count']; ?> responses</p>
           <div class="buttons">
             <form method='post' class="report-post" name="post_id">
               <input name="post_id" type="hidden" value="<?= $op_post['post_id']; ?>">

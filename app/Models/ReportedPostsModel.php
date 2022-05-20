@@ -16,17 +16,17 @@ class ReportedPostsModel extends Model
         'sub_post_id',
         'action',
         'board_id',
+        'reason',
         'ip_address',
         'admin_id'
     ];
+    protected $createdField = 'created_at';
 
 
 
     function __construct()
     {
         parent::__construct();
-        $db      = \Config\Database::connect();
-        $builder = $db->table('boards');
     }
 
     function fetchOpenReports()
@@ -36,12 +36,6 @@ class ReportedPostsModel extends Model
         LEFT OUTER JOIN op_posts ON reported_posts.post_id = op_posts.post_id WHERE reported_posts.action = 'o'";
         $result = $this->db->query($query)->getResult();
         return $result;
-    }
-
-    function countOpenReports()
-    {
-        $query = "SELECT COUNT(*) as count FROM reported_posts WHERE action = 'o'";
-        return $this->db->query($query)->getResult();
     }
 
     function fetchClosedReports()

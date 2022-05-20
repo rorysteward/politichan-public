@@ -51,12 +51,6 @@ class AdminModel extends Model
         $query = "UPDATE `boards` SET `board_name` = '$board_name', `board_title` = '$board_title', `board_slug` = '$board_slug' WHERE `board_id` = '$board_id'";
         $this->db->query($query);
     }
-    function deleteBoard($board_id)
-    {
-        $query = "DELETE FROM boards WHERE board_id = '$board_id'";
-        $this->db->query($query);
-    }
-
     function updateBoard($board_id)
     {
         $Time = date('Y-m-d');

@@ -6,8 +6,8 @@
                 Select board
             </label>
             <select class="govuk-select" name="board_id" id="board_id" for="board_id">
-                <?php foreach ($details[0] as $row) : ?>
-                    <option value="<?= $row['board_id'] ?>"><?= $row['board_name'] ?></option>
+                <?php foreach ($details as $row) : ?>
+                    <option value="<?= $row->board_id ?>"><?= $row->board_name ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

@@ -60,7 +60,7 @@ class Admin extends BaseController
                 'post_id' => $this->request->getVar('post_id'),
                 'length' => $this->request->getVar('length'),
                 'action' => $this->request->getVar('action'),
-                'count' => $ReportedPostsModel->countOpenReports(),
+                'count' => $ReportedPostsModel->select('COUNT(*) as count')->where('action', 'o')->findAll(),
 
             ];
             echo view('admin/header/index', $data);
@@ -332,7 +332,7 @@ class Admin extends BaseController
                 $maintenance->cleanUpAdmin($board_id);
             }
 
-            $AdminModel->deleteBoard($board_id);
+            $AdminModel->delete($board_id);
             return redirect()->to('/admin/boards');
         }
     }
@@ -345,7 +345,8 @@ class Admin extends BaseController
         } else {
             if ($this->request->isAJAX()) {
                 $ReportedPostsModel = new ReportedPostsModel();
-                $reported_posts = $ReportedPostsModel->fetchOpenReports();
+
+                $reported_posts = $ReportedPostsModel->select('reported_posts.report_id, reported_posts.post_id, reported_posts.board_id, reported_posts.action, reported_posts.ip_address, reported_posts.created_at, op_posts.post_title, op_posts.post_text')->join('op_posts', 'reported_posts.post_id = op_posts.post_id', 'left');
                 return json_encode($reported_posts);
             }
         }
@@ -357,9 +358,9 @@ class Admin extends BaseController
             echo view('footer/index');
         } else {
             if ($this->request->isAJAX()) {
-                $BoardModel = new BoardModel();
+                $AdminModel = new AdminModel();
                 $data = [
-                    'boards' => $BoardModel->pullAdditionalBoard(),
+                    'boards' => $AdminModel->select('board_name, board_id, board_title')->orderBy('boards.board_name ASC')->findAll(),
                 ];
                 return json_encode($data);
             }
@@ -394,14 +395,13 @@ class Admin extends BaseController
     public function modal()
     {
         if (session()->get('isLoggedIn')) {
-            $BoardModel = new BoardModel();
+            $AdminModel = new AdminModel();
             if ($this->request->getGet('action') == 'add') {
                 echo view('modals/add-board');
             } else {
                 $data = [
-                    'details' => $BoardModel->categoriesAndBoards()
+                    'details' => $AdminModel->asObject()->select('boards.board_id, boards.board_name, boards.board_title, categories.category_name')->join('categories', 'categories.category_id = boards.category_id', 'left')->orderBy('categories.category_name ASC')->findAll(),
                 ];
-
                 echo view('modals/' . $this->request->getGet('action') . '-board', $data);
             }
         }

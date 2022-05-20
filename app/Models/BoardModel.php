@@ -15,31 +15,6 @@ class BoardModel extends Model
     protected $allowedFields = ['original_post_id', 'board_id', 'post_title', 'post_email', 'post_text', 'post_password', 'image_path', 'image_height', 'image_width', 'ip_address', 'modified_at'];
 
 
-    public function categoriesAndBoards()
-    {
-        $query = "SELECT category_name FROM categories";
-        $result = $this->db->query($query)->getResultArray();
-        foreach ($result as $row) {
-            $query = "SELECT board_id, board_name, board_title, category_name FROM boards LEFT OUTER JOIN categories ON categories.category_id = boards.category_id WHERE categories.category_name = ('{$row['category_name']}') ORDER BY categories.category_name";
-            $array[] = $result = $this->db->query($query)->getResultArray();
-        }
-        return $array;
-    }
-
-    public function returnToBoard($post_id)
-    {
-        $query = "SELECT board_id FROM op_posts WHERE post_id = '$post_id'";
-        $result = $this->db->query($query)->getResult();
-        return $result;
-    }
-
-
-    public function getBoardName($board_id)
-    {
-        $query = "SELECT board_name FROM boards WHERE board_id = '$board_id'";
-        $result = $this->db->query($query)->getResult();
-        return $result;
-    }
 
     public function returnToPost($post_id)
     {
@@ -48,19 +23,6 @@ class BoardModel extends Model
         return $result;
     }
 
-    public function pullAdditionalBoard()
-    {
-        $query = "SELECT board_name, board_id, board_title FROM boards ORDER BY boards.board_name ASC";
-        $result = $this->db->query($query)->getResultArray();
-        return $result;
-    }
-
-    public function pullBoardInfo($board_id)
-    {
-        $query = "SELECT * FROM boards WHERE board_id ='$board_id'";
-        $result = $this->db->query($query)->getResultArray();
-        return $result;
-    }
     public function pullBoardInfoSlug($board_name)
     {
         $query = "SELECT * FROM boards WHERE board_name ='$board_name'";
@@ -85,16 +47,6 @@ class BoardModel extends Model
     }
 
 
-    public function countSubPosts($post_ids)
-    {
-        $array = array();
-        foreach ($post_ids as $row) {
-            $query = "SELECT COUNT(*) FROM op_posts WHERE original_post_id IN ('{$row['post_id']}')";
-            $array[] = $this->db->query($query)->getResultArray();
-        }
-
-        return $array;
-    }
 
     function getPosts()
     {
@@ -136,13 +88,6 @@ class BoardModel extends Model
         return $result;
     }
     // When new sub post is added it will bump the op_post
-
-    function updatePost($original_post_id)
-    {
-        $time = date('Y-m-d H:i:s');
-        $query = "UPDATE op_posts SET modified_at = '$time' WHERE op_posts.post_id = $original_post_id";
-        $this->db->query($query);
-    }
 
     // Delete post with password supplied
     function deletePost($password)
